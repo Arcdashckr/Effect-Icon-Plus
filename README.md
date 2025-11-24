@@ -9,7 +9,6 @@
 
 <h3 align="center"> Also currently have support for <a href="https://modrinth.com/mod/excessive-building" target="_blank">Excessive Building</a> and <a href="https://modrinth.com/mod/wilder-wild" target="_blank">Wilder Wild</a> mods </h3>
 <p align="center"> <img src="https://cdn.modrinth.com/data/cached_images/fa6f8492906c8a8d152fe67d29b2a99c4005eb87.png" alt="Supported Mod Icons"> </p>
-<h3 align="center"> Request mod support from <a href="https://github.com/hhhhh-ckr/Effect-Icon-Plus/issues" target="_blank">here</a> </h3> </br> </br>
 
 <h1 align="center"> Thanks to <a href="https://www.planetminecraft.com/texture-pack/upgrade-effect-icon/" target="_blank">Upgrade Effect Icon</a> by <a href="https://www.planetminecraft.com/member/cherryrero/" target="_blank">CherryRero</a> </h1>
 
