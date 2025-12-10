@@ -1,15 +1,28 @@
-![Effect Icon+](https://cdn.modrinth.com/data/cached_images/cfd610b4539c377c35346649d4cea31ae6af8473.png)
-</br> <p align="center"> ![All Effect Icons including new 1.21 Effects](https://cdn.modrinth.com/data/cached_images/74d494de768c3837b3c76997c167d4385719e53d.png) </p> </br>
-
+<p align="center">
+  <img src="../../blob/materials/page_art/title/effect_%C4%B1con_plus_title_horizontal.png"> </br> </br>
+  <img src="../../blob/materials/page_art/display/effect_display_vanilla.png">
+</p>
 <h3 align="center"> Changes the icons of the effects in the game </h3>
 
 <h3 align="center"> Add a different atmosphere to your gameplay with a more vibrant, more colorful look </h3>
 
-<h1 align="center"> NEW 1.21 Effect Icons ADDED! </h1> </br> </br>
+<h1 align="center"> NEW 1.21.11 Effect Icons ADDED! </h1> </br> </br>
 
-<h3 align="center"> Also currently have support for <a href="https://modrinth.com/mod/excessive-building" target="_blank">Excessive Building</a> and <a href="https://modrinth.com/mod/wilder-wild" target="_blank">Wilder Wild</a> mods </h3>
-<p align="center"> <img src="https://cdn.modrinth.com/data/cached_images/fa6f8492906c8a8d152fe67d29b2a99c4005eb87.png" alt="Supported Mod Icons"> </p>
-<h3 align="center"> Request mod support from <a href="https://github.com/hhhhh-ckr/Effect-Icon-Plus/issues" target="_blank">here</a> </h3> </br> </br>
+<h3 align="center"> Mod Compatibility </h3>
+<p align="center">
+  <a href="https://modrinth.com/mod/excessive-building" target="_blank">Excessive Building</a>,
+  <a href="https://modrinth.com/mod/wilder-wild" target="_blank">Wilder Wild</a>,
+  <a href="https://modrinth.com/mod/aether" target="_blank">The Aether</a>,
+  <a href="https://modrinth.com/mod/alexs-mobs" target="_blank">Alex's Mobs</a>,
+  <a href="https://modrinth.com/mod/alexs-caves" target="_blank">Alex's Caves</a>,
+  <a href="https://modrinth.com/mod/artifacts" target="_blank">Artifacts</a>,
+  <a href="https://modrinth.com/mod/farmers-delight-refabricated" target="_blank">Farmer's Delight</a>,
+  <a href="https://modrinth.com/mod/betterend" target="_blank">BetterEnd</a>,
+  <a href="https://modrinth.com/mod/quark" target="_blank">Quark</a>
+</p>
+
+<p align="center"> <img src="../../blob/materials/page_art/display/effect_display_mod.png"> </p>
+<h3 align="center"> Request mod compatibility from <a href="../../issues" target="_blank">here</a> </h3> </br> </br>
 
 <h1 align="center"> Thanks to <a href="https://www.planetminecraft.com/texture-pack/upgrade-effect-icon/" target="_blank">Upgrade Effect Icon</a> by <a href="https://www.planetminecraft.com/member/cherryrero/" target="_blank">CherryRero</a> </h1>
 
@@ -17,7 +30,7 @@
   <summary>
     Context
   </summary>
-    <p align="center"> <img src="CherryRero Permission.png" alt="CherryRero Permission Image"> </p>
+    <p align="center"> <img src="CherryRero Permission.png"> </p>
 
   GxCranky
 
