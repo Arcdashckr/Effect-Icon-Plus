@@ -1,13 +1,13 @@
 {
   "pack": {
     "description": [
-      "§f├ Effect Icons+ §7v1.0 §f| §a1.14§f+\n",
+      "§f├ Effect Icons+ §7v2.0 §f| §a1.14§f+\n",
       "§f└ §dChat'ur §9Game §6Studios"
     ],
-    "pack_format": 64,
+    "pack_format": 75,
     "supported_formats": {
       "min_inclusive": 4,
-      "max_inclusive": 64
+      "max_inclusive": 75
     }
   }
 }
