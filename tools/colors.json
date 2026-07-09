@@ -1,0 +1,187 @@
+{
+    "auto": {
+        "brewinandchewin": {
+            "intoxication": [
+                "#C19858FF",
+                "#A58253FF",
+                "#7F804AFF",
+                "#926C47FF",
+                "#60623BFF",
+                "#74542CFF",
+                "#4B381AFF",
+                "#4B381AFF",
+                "#4B381AFF"
+            ],
+            "raging": [
+                "#D2D2D2FF",
+                "#969696FF",
+                "#564931FF",
+                "#9F2616FF",
+                "#5E1708FF",
+                "#1E0B07FF",
+                "#1E0B07FF",
+                "#1E0B07FF",
+                "#1E0B07FF"
+            ],
+            "sweet_heart": [
+                "#D3CBD5FF",
+                "#545468FF",
+                "#E31420FF",
+                "#A10E0AFF",
+                "#6C100CFF",
+                "#3B0402FF",
+                "#3B0402FF",
+                "#3B0402FF",
+                "#3B0402FF"
+            ],
+            "tipsy": [
+                "#B1B1B1FF",
+                "#FFA31CFF",
+                "#D76F18FF",
+                "#A3622AFF",
+                "#65533BFF",
+                "#473725FF",
+                "#302317FF",
+                "#302317FF",
+                "#302317FF"
+            ]
+        },
+        "nirvana": {
+            "peace": [
+                "#D8F795FF",
+                "#DCC459FF",
+                "#958E50FF",
+                "#586721FF",
+                "#3D4823FF",
+                "#323721FF",
+                "#323721FF",
+                "#323721FF",
+                "#323721FF"
+            ]
+        }
+    },
+    "manual": {
+        "brewinandchewin": {
+            "intoxication": [
+                "#C19858FF",
+                "#A58253FF",
+                "#7F804AFF",
+                "#60623BFF",
+                "#926C47FF",
+                "#926C47FF",
+                "#74542CFF",
+                "#74542CFF",
+                "#4B381AFF"
+            ],
+            "raging": [
+                "#FFFFFFFF",
+                "#D8D8D8FF",
+                "#B6261FFF",
+                "#8D0A04FF",
+                "#684E1EFF",
+                "#896727FF",
+                "#6A0601FF",
+                "#6A0601FF",
+                "#380907FF"
+            ],
+            "sweet_heart": [
+                "#FF8181FF",
+                "#FF0606FF",
+                "#FFFFFFFF",
+                "#EAEAEAFF",
+                "#C6223BFF",
+                "#C6223BFF",
+                "#A10E0AFF",
+                "#6C100CFF",
+                "#3B0402FF"
+            ],
+            "tipsy": [
+                "#FFD32DFF",
+                "#FF9116FF",
+                "#D76F18FF",
+                "#A3622AFF",
+                "#805E36FF",
+                "#664F2FFF",
+                "#54402CFF",
+                "#473725FF",
+                "#34281BFF"
+            ],
+            "intoxication_all": [
+                "#C19858FF",
+                "#A58253FF",
+                "#7F804AFF",
+                "#926C47FF",
+                "#60623BFF",
+                "#74542CFF",
+                "#4B381AFF"
+            ],
+            "raging_all": [
+                "#FFFFFFFF",
+                "#D8D8D8FF",
+                "#C1C1C1FF",
+                "#969696FF",
+                "#896727FF",
+                "#684E1EFF",
+                "#B6261FFF",
+                "#444444FF",
+                "#493615FF",
+                "#8D0A04FF",
+                "#6A0601FF",
+                "#281E0BFF",
+                "#181818FF",
+                "#380907FF",
+                "#0C0303FF"
+            ],
+            "sweet_heart_all": [
+                "#FFFFFFFF",
+                "#EAEAEAFF",
+                "#D5D5DFFF",
+                "#B9B9CBFF",
+                "#FF8181FF",
+                "#545468FF",
+                "#C6223BFF",
+                "#FF0606FF",
+                "#A10E0AFF",
+                "#6C100CFF",
+                "#3B0402FF"
+            ],
+            "tipsy_all": [
+                "#FFD32DFF",
+                "#CDCDCDFF",
+                "#A8A8A8FF",
+                "#FF9116FF",
+                "#D76F18FF",
+                "#9B6F3BFF",
+                "#BA5F1BFF",
+                "#727272FF",
+                "#805E36FF",
+                "#664F2FFF",
+                "#54402CFF",
+                "#473725FF",
+                "#34281BFF",
+                "#29170FFF"
+            ]
+        },
+        "nirvana": {
+            "peace": [
+                "#D8F795FF",
+                "#DCC459FF",
+                "#958E50FF",
+                "#586721FF",
+                "#586721FF",
+                "#3D4823FF",
+                "#3D4823FF",
+                "#323721FF",
+                "#323721FF"
+            ],
+            "peace_all": [
+                "#D8F795FF",
+                "#DCC459FF",
+                "#958E50FF",
+                "#586721FF",
+                "#3D4823FF",
+                "#323721FF"
+            ]
+        }
+    }
+}
