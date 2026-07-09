@@ -1,0 +1,47 @@
+name: Mod Support Request
+description: Request support for a new Minecraft mod.
+title: "[Mod Request]: "
+labels:
+  - mod-request
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Request a new mod
+
+        If you'd like this project to support another mod, fill out the information below.
+
+  - type: input
+    id: mod_name
+    attributes:
+      label: Mod Name
+      description: What's the name of the mod?
+      placeholder: e.g. Alex's Caves
+    validations:
+      required: true
+
+  - type: input
+    id: mod_link
+    attributes:
+      label: Mod Link
+      description: Paste the Modrinth, CurseForge, or GitHub page.
+      placeholder: https://modrinth.com/mod/example
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Additional Information (Optional)
+      description: Anything else that would be useful to know?
+      placeholder: Version, compatibility notes, screenshots, etc.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched the existing issues to make sure this mod hasn't already been requested.
+          required: true
