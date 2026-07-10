@@ -70,7 +70,7 @@ def extract_palette_from_image(image_path, color_count=9):
         
         return colors
     except Exception as e:
-        print(f"❌ Renk paleti çıkarılamadı ({os.path.basename(image_path)}): {e}")
+        print(f"[-] Renk paleti çıkarılamadı ({os.path.basename(image_path)}): {e}")
         return ["#FFFFFFFF"]
 
 def load_or_create_json():
@@ -92,11 +92,11 @@ def save_json(data):
 
 def colorize_and_merge():
     if not os.path.exists(EXTRACTED_DIR):
-        print("❌ extracted klasörü bulunamadı! Önce 1. adımı çalıştırın.")
+        print("[-] extracted klasörü bulunamadı! Önce 1. adımı çalıştırın.")
         return
 
     print("\n--------------------------------------------------")
-    print("🤖 RENK SIRALAMA MODU SEÇİNİZ")
+    print(" RENK SIRALAMA MODU SEÇİNİZ")
     print("--------------------------------------------------")
     print("[1] Otomatik Sıralama Kullan (JSON'daki 'auto' bloğunu basar)")
     print("[2] Manuel Sıralama Kullan (JSON'daki 'manual' bloğunu basar)")
@@ -169,7 +169,7 @@ def colorize_and_merge():
             for i in range(1, 10):
                 frame_img = os.path.join(FRAMES_DIR, f"{i}.png")
                 if not os.path.exists(frame_img):
-                    print(f"❌ Kritik Hata: {i}.png çerçeve dilimi bulunamadı!")
+                    print(f"[-] Kritik Hata: {i}.png çerçeve dilimi bulunamadı!")
                     return
                 magick_cmd += ["(", frame_img, "-alpha", "On", "-fill", colors[i-1], "-opaque", "white", ")", "-composite"]
             
@@ -178,13 +178,13 @@ def colorize_and_merge():
             try:
                 subprocess.run(magick_cmd, check=True)
             except Exception as e:
-                print(f"❌ ImageMagick Hatası ({effect_name}): {e}")
+                print(f"[-] ImageMagick Hatası ({effect_name}): {e}")
 
     if json_updated:
         save_json(json_data)
-        print("📝 JSON dosyası yeni verilerle güncellendi.")
+        print("[>] JSON dosyası yeni verilerle güncellendi.")
 
-    print("\n✅ İşlem tamamlandı! İkonlar başarıyla oluşturuldu.")
+    print("\n[+] BAŞARILI: İşlem tamamlandı! İkonlar başarıyla oluşturuldu.")
 
 if __name__ == "__main__":
     colorize_and_merge()

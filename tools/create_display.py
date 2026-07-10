@@ -1,21 +1,39 @@
 import os
 import subprocess
 import glob
+import json
 
 # Klasör yolları
 TOOLS_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_DIR = os.path.dirname(TOOLS_DIR)
 ASSETS_DIR = os.path.join(REPO_DIR, "assets")
 OUTPUT_DIR = os.path.join(REPO_DIR, "images", "display")
+STATS_PATH = os.path.join(TOOLS_DIR, "stats.json")
 README_PATH = os.path.join(REPO_DIR, "README.md")
 COMPAT_PATH = os.path.join(REPO_DIR, "compatibility.md")
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
+def update_stats_json(total_mods, total_effects):
+    """tools/stats.json dosyasını oluşturur"""
+
+    stats = {
+        "schemaVersion": 1,
+        "label": "Effect Icon Plus",
+        "message": "",
+        "supported_mods": total_mods,
+        "total_effect_icons": total_effects
+    }
+
+    with open(STATS_PATH, "w", encoding="utf-8") as f:
+        json.dump(stats, f, indent=4)
+
+    print("[>] stats.json güncellendi!")
+
 def update_readme_stats(total_mods, total_effects):
     """README.md dosyasını kullanıcının özel rozet şablonuyla günceller"""
     if not os.path.exists(README_PATH):
-        print("⚠️ README.md bulunamadı, istatistik yazımı atlanıyor.")
+        print("[!] Pas Geçildi: README.md bulunamadı, istatistik yazımı atlanıyor.")
         return
 
     # Tamamen senin tasarladığın dinamik badge yapısı
@@ -32,9 +50,9 @@ def update_readme_stats(total_mods, total_effects):
 ---
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Supported_Mods-_?style=for-the-badge&logo=modrinth&logoColor=%2300AF5C&logoSize=64&label=39&labelColor=black&color=00753F&link=https%3A%2F%2Fgithub.com%2FArcdashckr%2FEffect-Icon-Plus%2Fblob%2Fmain%2Fcompatibility.md" alt="Supported Mods Count: 39">
+    <img src="https://img.shields.io/badge/dynamic/json?style=for-the-badge&logo=modrinth&logoColor=%2300AF5C&label=Supported%20Mods&color=00753F&labelColor=black&query=$.supported_mods&url=https://raw.githubusercontent.com/Arcdashckr/Effect-Icon-Plus/main/tools/stats.json">
     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    <img src="https://img.shields.io/badge/Total_Effect_Icons-_?style=for-the-badge&logo=buffer&logoColor=%23FFFFFF&logoSize=64&label=244&labelColor=black&color=blue&link=https%3A%2F%2Fgithub.com%2FArcdashckr%2FEffect-Icon-Plus%2Ftree%2Fmain%2Fassets" alt="Total Effects Count: 244">
+    <img src="https://img.shields.io/badge/dynamic/json?style=for-the-badge&logo=buffer&logoColor=white&label=Total%20Effect%20Icons&color=blue&labelColor=black&query=$.total_effect_icons&url=https://raw.githubusercontent.com/Arcdashckr/Effect-Icon-Plus/main/tools/stats.json">
 </p>
 
 <p align="center">
@@ -54,9 +72,9 @@ def update_readme_stats(total_mods, total_effects):
     try:
         with open(README_PATH, "w", encoding="utf-8") as f:
             f.write(readme_template)
-        print("📝 README.md istatistikleri ve özel rozetleriniz güncellendi!")
+        print("[>] README.md istatistikleri ve özel rozetleriniz güncellendi!")
     except Exception as e:
-        print(f"❌ README.md güncellenirken hata oluştu: {e}")
+        print(f"[-] README.md güncellenirken hata oluştu: {e}")
 
 def update_compatibility_file(mod_list_with_counts):
     """compatibility.md dosyasını güncel bir tablo halinde otomatik oluşturur"""
@@ -74,9 +92,9 @@ def update_compatibility_file(mod_list_with_counts):
             
         with open(COMPAT_PATH, "w", encoding="utf-8") as f:
             f.write(compat_content)
-        print("📝 compatibility.md tablosu başarıyla güncellendi!")
+        print("[>] compatibility.md tablosu başarıyla güncellendi!")
     except Exception as e:
-        print(f"❌ compatibility.md güncellenirken hata oluştu: {e}")
+        print(f"[-] compatibility.md güncellenirken hata oluştu: {e}")
 
 def calculate_repo_stats_and_list():
     """Tüm repodaki detaylı istatistikleri toplar"""
@@ -113,7 +131,7 @@ def generate_grid(mod_ids, output_name_suffix):
             all_icons.extend(glob.glob(os.path.join(effect_dir, "*.png")))
 
     if not all_icons:
-        print("⚠️ Belirtilen klasörlerde hiç ikon (.png) bulunamadı.")
+        print("[-] Belirtilen klasörlerde hiç ikon (.png) bulunamadı.")
         return
 
     base_output = os.path.join(OUTPUT_DIR, f"effect_display_{output_name_suffix}.png")
@@ -130,7 +148,7 @@ def generate_grid(mod_ids, output_name_suffix):
 
     try:
         subprocess.run(montage_cmd, check=True)
-        print(f"✅ Standart grid oluşturuldu: {base_output}")
+        print(f"[+] BAŞARILI: Standart grid oluşturuldu: {base_output}")
 
         scale_cmd = [
             "magick", base_output,
@@ -138,21 +156,23 @@ def generate_grid(mod_ids, output_name_suffix):
             upscaled_output
         ]
         subprocess.run(scale_cmd, check=True)
-        print(f"⚡ Keskin ve tam orantılı büyük grid oluşturuldu: {upscaled_output}")
+        print(f"[+] BAŞARILI: Keskin ve tam orantılı büyük grid oluşturuldu: {upscaled_output}")
 
         # Her grid üretiminde tüm sistem istatistiklerini hesapla ve dosyaları enjekte et
         total_mods, total_effects, mod_list_with_counts = calculate_repo_stats_and_list()
-        
+
+        update_stats_json(total_mods, total_effects)
+
         # Dosyaları güncelle
         update_readme_stats(total_mods, total_effects)
         update_compatibility_file(mod_list_with_counts)
 
     except Exception as e:
-        print(f"❌ ImageMagick Grid Hatası: {e}")
+        print(f"[-] ImageMagick Grid Hatası: {e}")
 
 def main():
     print("\n--------------------------------------------------")
-    print("🖼️  ÖNİZLEME GRİDÜ (DISPLAY) OLUŞTURUCU")
+    print(" ÖNİZLEME GRİDÜ (DISPLAY) OLUŞTURUCU")
     print("--------------------------------------------------")
     print("[1] Sadece Vanilla (Minecraft Klasörü) İçin Oluştur")
     print("[2] Belirli Bir Mod İçin Özel Oluştur")
@@ -162,7 +182,7 @@ def main():
     secim = input("Seçiminiz (1-4): ").strip()
 
     if not os.path.exists(ASSETS_DIR):
-        print("❌ assets klasörü bulunamadı!")
+        print("[-] assets klasörü bulunamadı!")
         return
 
     all_folders = [f for f in os.listdir(ASSETS_DIR) if os.path.isdir(os.path.join(ASSETS_DIR, f))]
@@ -191,7 +211,7 @@ def main():
             
         generate_grid(target_mods, "mod")
     else:
-        print("❌ Geçersiz seçim.")
+        print("[-] Geçersiz seçim.")
 
 if __name__ == "__main__":
     main()

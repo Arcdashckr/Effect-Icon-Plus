@@ -1885,6 +1885,260 @@
                 "#A35B37FF",
                 "#975632FF"
             ]
+        },
+        "createaddition": {
+            "shocking": [
+                "#FFFA13FF",
+                "#FFE900FF",
+                "#FADF00FF",
+                "#F5DA00FF",
+                "#F0D800FF",
+                "#EBD300FF",
+                "#E6CC00FF",
+                "#DAC40DFF",
+                "#A99600FF"
+            ]
+        },
+        "create_bic_bit": {
+            "oiled_up": [
+                "#FFFFFFFF",
+                "#FFFFD2FF",
+                "#FFFF63FF",
+                "#FFDB59FF",
+                "#FFB42EFF",
+                "#FF8D2BFF",
+                "#FF8D2BFF",
+                "#FF8D2BFF",
+                "#FF8D2BFF"
+            ],
+            "unanchored": [
+                "#F877FFFF",
+                "#E033E6FF",
+                "#CB2BB8FF",
+                "#DF00FFFF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF"
+            ]
+        },
+        "create_new_age": {
+            "radiation_poisoning": [
+                "#FFD16CFF",
+                "#FFC65BFF",
+                "#FDBD50FF",
+                "#FDBC50FF",
+                "#F5A531FF",
+                "#F0872DFF",
+                "#783A31FF",
+                "#40151EFF",
+                "#310D18FF"
+            ]
+        },
+        "estrogen": {
+            "dreaming": [
+                "#BFFFFFFF",
+                "#6CE9FFFF",
+                "#4AC3FFFF",
+                "#009FE7FF",
+                "#5A7C85FF",
+                "#376474FF",
+                "#244658FF",
+                "#183545FF",
+                "#00040AFF"
+            ],
+            "estrogen": [
+                "#5ABF1DFF",
+                "#FF4A24FF",
+                "#1A8258FF",
+                "#D70A29FF",
+                "#FD0006FF",
+                "#BE0009FF",
+                "#00214EFF",
+                "#670000FF",
+                "#290000FF"
+            ]
+        },
+        "garnished": {
+            "augmented": [
+                "#00BEFFFF",
+                "#FF5E00FF",
+                "#009EFFFF",
+                "#FF3B00FF",
+                "#0080FFFF",
+                "#FF1F00FF",
+                "#005AFFFF",
+                "#FE0000FF",
+                "#0042FEFF"
+            ],
+            "aversion": [
+                "#F6F0C9FF",
+                "#DCD5A6FF",
+                "#C7BE8DFF",
+                "#A99964FF",
+                "#8F7732FF",
+                "#4A5E50FF",
+                "#5D4A1DFF",
+                "#36423DFF",
+                "#262C2EFF"
+            ],
+            "cognate": [
+                "#FFFFFFFF",
+                "#F9ECF9FF",
+                "#C8A1C8FF",
+                "#AB81AAFF",
+                "#916090FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF"
+            ],
+            "flagrant": [
+                "#F877FFFF",
+                "#DF00FFFF",
+                "#622953FF",
+                "#270A23FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF"
+            ],
+            "freezing": [
+                "#FFFFFFFF",
+                "#FFFFFFFF",
+                "#F3FFFFFF",
+                "#CDFFFFFF",
+                "#A3FBFEFF",
+                "#6DD3E6FF",
+                "#6DD3E6FF",
+                "#6DD3E6FF",
+                "#6DD3E6FF"
+            ],
+            "mummification": [
+                "#FAFFA9FF",
+                "#BEFF91FF",
+                "#99FF77FF",
+                "#CEA392FF",
+                "#B28172FF",
+                "#956359FF",
+                "#784440FF",
+                "#552626FF",
+                "#380E0EFF"
+            ],
+            "sanctity": [
+                "#FFFFFFFF",
+                "#E7FAFAFF",
+                "#BDDAE1FF",
+                "#A5BCCBFF",
+                "#A8A5CBFF",
+                "#958AB4FF",
+                "#86729FFF",
+                "#86729FFF",
+                "#86729FFF"
+            ],
+            "spirited_resistance": [
+                "#FFFFFFFF",
+                "#58FFFFFF",
+                "#B7CECCFF",
+                "#99B3B3FF",
+                "#809B9FFF",
+                "#688288FF",
+                "#00B0B7FF",
+                "#506C73FF",
+                "#3D5A68FF"
+            ],
+            "sugar_high": [
+                "#E0F665FF",
+                "#BEDF4CFF",
+                "#A3BEC4FF",
+                "#A0CB3BFF",
+                "#81A6ABFF",
+                "#7DB82BFF",
+                "#63929AFF",
+                "#EE5549FF",
+                "#5A9F1AFF"
+            ],
+            "thorns": [
+                "#FFFFFFFF",
+                "#FFFEFFFF",
+                "#FEE9DBFF",
+                "#E5C6B8FF",
+                "#CBA89BFF",
+                "#CBA89BFF",
+                "#CBA89BFF",
+                "#CBA89BFF",
+                "#CBA89BFF"
+            ],
+            "truth_seeker": [
+                "#FFFFFFFF",
+                "#FAEFFFFF",
+                "#E4D8FFFF",
+                "#CBC2F8FF",
+                "#351C4EFF",
+                "#351C4CFF",
+                "#241038FF",
+                "#1D0A30FF",
+                "#140326FF"
+            ],
+            "vulnerable": [
+                "#B9BFCEFF",
+                "#9BA4B5FF",
+                "#828CA1FF",
+                "#6A738BFF",
+                "#535D76FF",
+                "#404B6AFF",
+                "#2D3A5AFF",
+                "#2E3A56FF",
+                "#050D21FF"
+            ],
+            "yeeted": [
+                "#8FFFFAFF",
+                "#83FFE4FF",
+                "#17E0BDFF",
+                "#0E8571FF",
+                "#6C365DFF",
+                "#622953FF",
+                "#4C2441FF",
+                "#004032FF",
+                "#270A23FF"
+            ]
+        },
+        "testosterone": {
+            "afterlife": [
+                "#FFFFF1FF",
+                "#FDF6C9FF",
+                "#E9DF99FF",
+                "#FF8181FF",
+                "#D70A29FF",
+                "#FF0000FF",
+                "#A90000FF",
+                "#670000FF",
+                "#290000FF"
+            ],
+            "man_power": [
+                "#5ABF1DFF",
+                "#1A8258FF",
+                "#C600FFFF",
+                "#5D00BEFF",
+                "#4200A1FF",
+                "#00214EFF",
+                "#23005FFF",
+                "#190053FF",
+                "#05002DFF"
+            ],
+            "roid_rage": [
+                "#D70A29FF",
+                "#FF0000FF",
+                "#670000FF",
+                "#290000FF",
+                "#290000FF",
+                "#290000FF",
+                "#290000FF",
+                "#290000FF",
+                "#290000FF"
+            ]
         }
     },
     "manual": {
@@ -6208,6 +6462,498 @@
                 "#220E00FF",
                 "#320400FF",
                 "#140400FF"
+            ]
+        },
+        "createaddition": {
+            "shocking": [
+                "#FFFA13FF",
+                "#FFE900FF",
+                "#FADF00FF",
+                "#F5DA00FF",
+                "#F0D800FF",
+                "#EBD300FF",
+                "#E6CC00FF",
+                "#DAC40DFF",
+                "#A99600FF"
+            ],
+            "shocking_all": [
+                "#FFFA13FF",
+                "#FFE900FF",
+                "#FADF00FF",
+                "#F5DA00FF",
+                "#F0D800FF",
+                "#EBD300FF",
+                "#E6CC00FF",
+                "#DAC40DFF",
+                "#A99600FF"
+            ]
+        },
+        "create_bic_bit": {
+            "oiled_up": [
+                "#FFFFFFFF",
+                "#FFFFD2FF",
+                "#FFFF63FF",
+                "#FFDB59FF",
+                "#FFB42EFF",
+                "#FF8D2BFF",
+                "#FF8D2BFF",
+                "#FF8D2BFF",
+                "#FF8D2BFF"
+            ],
+            "oiled_up_all": [
+                "#FFFFFFFF",
+                "#FFFFD2FF",
+                "#FFFF63FF",
+                "#FFDB59FF",
+                "#FFB42EFF",
+                "#FF8D2BFF"
+            ],
+            "unanchored": [
+                "#F877FFFF",
+                "#E033E6FF",
+                "#CB2BB8FF",
+                "#DF00FFFF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF"
+            ],
+            "unanchored_all": [
+                "#F877FFFF",
+                "#E033E6FF",
+                "#CB2BB8FF",
+                "#DF00FFFF",
+                "#000000FF"
+            ]
+        },
+        "create_new_age": {
+            "radiation_poisoning": [
+                "#FFD16CFF",
+                "#FFC65BFF",
+                "#FDBD50FF",
+                "#FDBC50FF",
+                "#F5A531FF",
+                "#F0872DFF",
+                "#783A31FF",
+                "#40151EFF",
+                "#310D18FF"
+            ],
+            "radiation_poisoning_all": [
+                "#FFD16CFF",
+                "#FFC65BFF",
+                "#FDBD50FF",
+                "#FDBC50FF",
+                "#F5A531FF",
+                "#F0872DFF",
+                "#783A31FF",
+                "#40151EFF",
+                "#310D18FF",
+                "#210310FF"
+            ]
+        },
+        "estrogen": {
+            "dreaming": [
+                "#BFFFFFFF",
+                "#6CE9FFFF",
+                "#4AC3FFFF",
+                "#009FE7FF",
+                "#5A7C85FF",
+                "#376474FF",
+                "#244658FF",
+                "#183545FF",
+                "#00040AFF"
+            ],
+            "dreaming_all": [
+                "#BFFFFFFF",
+                "#6CE9FFFF",
+                "#4AC3FFFF",
+                "#009FE7FF",
+                "#5A7C85FF",
+                "#376474FF",
+                "#244658FF",
+                "#183545FF",
+                "#00040AFF"
+            ],
+            "estrogen": [
+                "#5ABF1DFF",
+                "#FF4A24FF",
+                "#1A8258FF",
+                "#D70A29FF",
+                "#FD0006FF",
+                "#BE0009FF",
+                "#00214EFF",
+                "#670000FF",
+                "#290000FF"
+            ],
+            "estrogen_all": [
+                "#5ABF1DFF",
+                "#FF4A24FF",
+                "#1A8258FF",
+                "#D70A29FF",
+                "#FD0006FF",
+                "#BE0009FF",
+                "#00214EFF",
+                "#670000FF",
+                "#290000FF"
+            ]
+        },
+        "garnished": {
+            "augmented": [
+                "#00BEFFFF",
+                "#FF5E00FF",
+                "#009EFFFF",
+                "#FF3B00FF",
+                "#0080FFFF",
+                "#FF1F00FF",
+                "#005AFFFF",
+                "#FE0000FF",
+                "#0042FEFF"
+            ],
+            "augmented_all": [
+                "#00BEFFFF",
+                "#FF5E00FF",
+                "#009EFFFF",
+                "#FF3B00FF",
+                "#0080FFFF",
+                "#FF1F00FF",
+                "#005AFFFF",
+                "#FE0000FF",
+                "#0042FEFF",
+                "#F10000FF"
+            ],
+            "aversion": [
+                "#F6F0C9FF",
+                "#DCD5A6FF",
+                "#C7BE8DFF",
+                "#A99964FF",
+                "#8F7732FF",
+                "#4A5E50FF",
+                "#5D4A1DFF",
+                "#36423DFF",
+                "#262C2EFF"
+            ],
+            "aversion_all": [
+                "#F6F0C9FF",
+                "#DCD5A6FF",
+                "#C7BE8DFF",
+                "#A99964FF",
+                "#8F7732FF",
+                "#4A5E50FF",
+                "#5D4A1DFF",
+                "#36423DFF",
+                "#262C2EFF",
+                "#0F0F17FF",
+                "#06080DFF"
+            ],
+            "cognate": [
+                "#FFFFFFFF",
+                "#F9ECF9FF",
+                "#C8A1C8FF",
+                "#AB81AAFF",
+                "#916090FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF"
+            ],
+            "cognate_all": [
+                "#FFFFFFFF",
+                "#F9ECF9FF",
+                "#C8A1C8FF",
+                "#AB81AAFF",
+                "#916090FF",
+                "#000000FF"
+            ],
+            "flagrant": [
+                "#F877FFFF",
+                "#DF00FFFF",
+                "#622953FF",
+                "#270A23FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF",
+                "#000000FF"
+            ],
+            "flagrant_all": [
+                "#F877FFFF",
+                "#DF00FFFF",
+                "#622953FF",
+                "#270A23FF",
+                "#000000FF",
+                "#000000FF"
+            ],
+            "freezing": [
+                "#FFFFFFFF",
+                "#FFFFFFFF",
+                "#F3FFFFFF",
+                "#CDFFFFFF",
+                "#A3FBFEFF",
+                "#6DD3E6FF",
+                "#6DD3E6FF",
+                "#6DD3E6FF",
+                "#6DD3E6FF"
+            ],
+            "freezing_all": [
+                "#FFFFFFFF",
+                "#FFFFFFFF",
+                "#F3FFFFFF",
+                "#CDFFFFFF",
+                "#A3FBFEFF",
+                "#6DD3E6FF"
+            ],
+            "mummification": [
+                "#FAFFA9FF",
+                "#BEFF91FF",
+                "#99FF77FF",
+                "#CEA392FF",
+                "#B28172FF",
+                "#956359FF",
+                "#784440FF",
+                "#552626FF",
+                "#380E0EFF"
+            ],
+            "mummification_all": [
+                "#FAFFA9FF",
+                "#BEFF91FF",
+                "#99FF77FF",
+                "#CEA392FF",
+                "#B28172FF",
+                "#956359FF",
+                "#784440FF",
+                "#552626FF",
+                "#380E0EFF"
+            ],
+            "sanctity": [
+                "#FFFFFFFF",
+                "#E7FAFAFF",
+                "#BDDAE1FF",
+                "#A5BCCBFF",
+                "#A8A5CBFF",
+                "#958AB4FF",
+                "#86729FFF",
+                "#86729FFF",
+                "#86729FFF"
+            ],
+            "sanctity_all": [
+                "#FFFFFFFF",
+                "#E7FAFAFF",
+                "#BDDAE1FF",
+                "#A5BCCBFF",
+                "#A8A5CBFF",
+                "#958AB4FF",
+                "#86729FFF"
+            ],
+            "spirited_resistance": [
+                "#FFFFFFFF",
+                "#58FFFFFF",
+                "#B7CECCFF",
+                "#99B3B3FF",
+                "#809B9FFF",
+                "#688288FF",
+                "#00B0B7FF",
+                "#506C73FF",
+                "#3D5A68FF"
+            ],
+            "spirited_resistance_all": [
+                "#FFFFFFFF",
+                "#58FFFFFF",
+                "#B7CECCFF",
+                "#99B3B3FF",
+                "#809B9FFF",
+                "#688288FF",
+                "#00B0B7FF",
+                "#506C73FF",
+                "#3D5A68FF",
+                "#007788FF",
+                "#2B4958FF",
+                "#2C4954FF",
+                "#22130AFF",
+                "#031C1EFF"
+            ],
+            "sugar_high": [
+                "#E0F665FF",
+                "#BEDF4CFF",
+                "#A3BEC4FF",
+                "#A0CB3BFF",
+                "#81A6ABFF",
+                "#7DB82BFF",
+                "#63929AFF",
+                "#EE5549FF",
+                "#5A9F1AFF"
+            ],
+            "sugar_high_all": [
+                "#E0F665FF",
+                "#BEDF4CFF",
+                "#A3BEC4FF",
+                "#A0CB3BFF",
+                "#81A6ABFF",
+                "#7DB82BFF",
+                "#63929AFF",
+                "#EE5549FF",
+                "#5A9F1AFF",
+                "#40808AFF",
+                "#3B8209FF",
+                "#1D6779FF",
+                "#AE291EFF",
+                "#216C00FF",
+                "#8B170EFF",
+                "#004A68FF",
+                "#00335DFF",
+                "#680000FF",
+                "#490000FF",
+                "#2E0000FF"
+            ],
+            "thorns": [
+                "#FFFFFFFF",
+                "#FFFEFFFF",
+                "#FEE9DBFF",
+                "#E5C6B8FF",
+                "#CBA89BFF",
+                "#CBA89BFF",
+                "#CBA89BFF",
+                "#CBA89BFF",
+                "#CBA89BFF"
+            ],
+            "thorns_all": [
+                "#FFFFFFFF",
+                "#FFFEFFFF",
+                "#FEE9DBFF",
+                "#E5C6B8FF",
+                "#CBA89BFF"
+            ],
+            "truth_seeker": [
+                "#FFFFFFFF",
+                "#FAEFFFFF",
+                "#E4D8FFFF",
+                "#CBC2F8FF",
+                "#351C4EFF",
+                "#351C4CFF",
+                "#241038FF",
+                "#1D0A30FF",
+                "#140326FF"
+            ],
+            "truth_seeker_all": [
+                "#FFFFFFFF",
+                "#FAEFFFFF",
+                "#E4D8FFFF",
+                "#CBC2F8FF",
+                "#351C4EFF",
+                "#351C4CFF",
+                "#241038FF",
+                "#1D0A30FF",
+                "#140326FF",
+                "#0A0018FF",
+                "#000009FF"
+            ],
+            "vulnerable": [
+                "#B9BFCEFF",
+                "#9BA4B5FF",
+                "#828CA1FF",
+                "#6A738BFF",
+                "#535D76FF",
+                "#404B6AFF",
+                "#2D3A5AFF",
+                "#2E3A56FF",
+                "#050D21FF"
+            ],
+            "vulnerable_all": [
+                "#B9BFCEFF",
+                "#9BA4B5FF",
+                "#828CA1FF",
+                "#6A738BFF",
+                "#535D76FF",
+                "#404B6AFF",
+                "#2D3A5AFF",
+                "#2E3A56FF",
+                "#050D21FF"
+            ],
+            "yeeted": [
+                "#8FFFFAFF",
+                "#83FFE4FF",
+                "#17E0BDFF",
+                "#0E8571FF",
+                "#6C365DFF",
+                "#622953FF",
+                "#4C2441FF",
+                "#004032FF",
+                "#270A23FF"
+            ],
+            "yeeted_all": [
+                "#8FFFFAFF",
+                "#83FFE4FF",
+                "#17E0BDFF",
+                "#0E8571FF",
+                "#6C365DFF",
+                "#622953FF",
+                "#4C2441FF",
+                "#004032FF",
+                "#270A23FF",
+                "#00271DFF"
+            ]
+        },
+        "testosterone": {
+            "afterlife": [
+                "#FFFFF1FF",
+                "#FDF6C9FF",
+                "#E9DF99FF",
+                "#FF8181FF",
+                "#D70A29FF",
+                "#FF0000FF",
+                "#A90000FF",
+                "#670000FF",
+                "#290000FF"
+            ],
+            "afterlife_all": [
+                "#FFFFF1FF",
+                "#FDF6C9FF",
+                "#E9DF99FF",
+                "#FF8181FF",
+                "#D70A29FF",
+                "#FF0000FF",
+                "#A90000FF",
+                "#670000FF",
+                "#290000FF"
+            ],
+            "man_power": [
+                "#5ABF1DFF",
+                "#1A8258FF",
+                "#C600FFFF",
+                "#5D00BEFF",
+                "#4200A1FF",
+                "#00214EFF",
+                "#23005FFF",
+                "#190053FF",
+                "#05002DFF"
+            ],
+            "man_power_all": [
+                "#5ABF1DFF",
+                "#1A8258FF",
+                "#C600FFFF",
+                "#5D00BEFF",
+                "#4200A1FF",
+                "#00214EFF",
+                "#23005FFF",
+                "#190053FF",
+                "#05002DFF"
+            ],
+            "roid_rage": [
+                "#D70A29FF",
+                "#FF0000FF",
+                "#670000FF",
+                "#290000FF",
+                "#290000FF",
+                "#290000FF",
+                "#290000FF",
+                "#290000FF",
+                "#290000FF"
+            ],
+            "roid_rage_all": [
+                "#D70A29FF",
+                "#FF0000FF",
+                "#670000FF",
+                "#290000FF"
             ]
         }
     }

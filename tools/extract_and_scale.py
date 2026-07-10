@@ -1,78 +1,101 @@
 import os
 import zipfile
-import shutil
-import subprocess
+import glob
+from PIL import Image
 
 # Klasör yolları
 TOOLS_DIR = os.path.dirname(os.path.abspath(__file__))
 MODS_DIR = os.path.join(TOOLS_DIR, "mods")
 EXTRACTED_DIR = os.path.join(TOOLS_DIR, "extracted")
 
-# Klasörleri kontrol et ve yoksa oluştur
-os.makedirs(MODS_DIR, exist_ok=True)
 os.makedirs(EXTRACTED_DIR, exist_ok=True)
 
-def process_jar(jar_path):
-    jar_name = os.path.basename(jar_path)
-    print(f"\n📦 {jar_name} işleniyor...")
+def scale_image(source_path, dest_path, size=(36, 36)):
+    """Resmi pikselleri bozmadan (Nearest Neighbor) 36x36 boyutuna büyütür."""
+    try:
+        with Image.open(source_path) as img:
+            # Keskin pixel-art görüntüsü için NEAREST filtresi şart
+            scaled_img = img.resize(size, Image.Resampling.NEAREST)
+            scaled_img.save(dest_path)
+        return True
+    except Exception as e:
+        print(f"[-] Resim büyütme hatası ({os.path.basename(source_path)}): {e}")
+        return False
+
+def extract_icons_from_jar(jar_path):
+    """Jar dosyasındaki efekt ikonlarını ayıklar (programmer_art hariç)."""
+    mod_name = os.path.splitext(os.path.basename(jar_path))[0]
     
-    with zipfile.ZipFile(jar_path, 'r') as jar:
-        # Klasör içindeki tüm dosyaları tara
-        for file_info in jar.infolist():
-            filename = file_info.filename
+    print(f"\n==================================================")
+    print(f"[~] İşleniyor: {mod_name}")
+    print(f"==================================================")
+    
+    try:
+        with zipfile.ZipFile(jar_path, 'r') as jar:
+            extracted_count = 0
             
-            # Minecraft standart mob_effect doku yolunu ara
-            # assets/<mod_id>/textures/mob_effect/<efekt>.png
-            if "textures/mob_effect/" in filename and filename.endswith(".png"):
-                # Klasör yapısını parçala (assets, mod_id, textures, mob_effect, resim_adi)
-                parts = filename.split('/')
-                if len(parts) >= 5:
-                    mod_id = parts[1]
-                    image_name = parts[-1]
+            for file_info in jar.infolist():
+                filename = file_info.filename
+                
+                if "programmer_art" in filename.lower():
+                    continue
+                
+                if "assets/" in filename and "textures/mob_effect/" in filename and filename.endswith(".png"):
                     
-                    # Hedef geçici klasör yapısını oluştur
-                    target_mod_dir = os.path.join(EXTRACTED_DIR, mod_id)
-                    os.makedirs(target_mod_dir, exist_ok=True)
-                    
-                    # Resmi geçici olarak zipten çıkar
-                    temp_extract_path = os.path.join(target_mod_dir, "temp_" + image_name)
-                    final_output_path = os.path.join(target_mod_dir, image_name)
-                    
-                    with jar.open(filename) as source, open(temp_extract_path, "wb") as target:
-                        shutil.copyfileobj(source, target)
-                    
-                    # ImageMagick ile kayıpsız (Nearest Neighbor) 2 katına büyütme (18x18 -> 36x36)
-                    print(f"       ⚡ {mod_id} -> {image_name} büyütülüyor...")
+                    parts = filename.split("/")
                     try:
-                        # -scale parametresi pikselleri bozmadan, bulandırmadan büyütür
-                        subprocess.run([
-                            "magick", temp_extract_path, 
-                            "-scale", "200%", 
-                            final_output_path
-                        ], check=True)
-                    except Exception as e:
-                        print(f"       ❌ ImageMagick hatası ({image_name}): {e}")
-                        # Eğer imagemagick hata verirse ham halini bırak
-                        shutil.copy(temp_extract_path, final_output_path)
+                        assets_index = parts.index("assets")
+                        mod_id = parts[assets_index + 1]
+                        icon_name = parts[-1]
+                    except (ValueError, IndexError):
+                        continue
+                        
+                    mod_output_dir = os.path.join(EXTRACTED_DIR, mod_id)
+                    os.makedirs(mod_output_dir, exist_ok=True)
                     
-                    # Geçici ham dosyayı temizle
-                    if os.path.exists(temp_extract_path):
-                        os.remove(temp_extract_path)
+                    temp_source = jar.extract(file_info, TOOLS_DIR)
+                    dest_path = os.path.join(mod_output_dir, icon_name)
+                    
+                    # Burada artık her zaman 36x36 olarak işlenecek
+                    if scale_image(temp_source, dest_path):
+                        print(f"  [>] Ayıklandı: [{mod_id}] -> {icon_name}")
+                        extracted_count += 1
+                        
+                    if os.path.exists(temp_source):
+                        os.remove(temp_source)
+                        try:
+                            os.removedirs(os.path.dirname(temp_source))
+                        except OSError:
+                            pass
+                            
+            if extracted_count > 0:
+                print("--------------------------------------------------")
+                print(f"[+] BAŞARILI: Toplam {extracted_count} adet ikon ayıklandı.")
+            else:
+                print(f"[!] Pas Geçildi: Bu modun içinde uygun efekt ikonu yok.")
+                
+    except Exception as e:
+        print(f"[-] Jar okunurken hata oluştu ({os.path.basename(jar_path)}): {e}")
 
 def main():
-    jar_files = [f for f in os.listdir(MODS_DIR) if f.endswith(".jar")]
+    print("\n==================================================")
+    print(" MODLARDAN EFEKT İKONLARINI AYIKLAMA MODÜLÜ")
+    print("==================================================")
     
-    if not jar_files:
-        print("❌ 'mods' klasöründe herhangi bir .jar dosyası bulunamadı!")
+    if not os.path.exists(MODS_DIR) or not os.listdir(MODS_DIR):
+        print("[-] 'tools/mods/' klasörü boş veya bulunamadı. Lütfen önce mod indirin.")
         return
         
-    print(f"🚀 Toplam {len(jar_files)} mod dosyası bulundu. İşlem başlıyor...")
+    jar_files = glob.glob(os.path.join(MODS_DIR, "*.jar")) + glob.glob(os.path.join(MODS_DIR, "*.zip"))
     
-    for jar_file in jar_files:
-        jar_path = os.path.join(MODS_DIR, jar_file)
-        process_jar(jar_path)
+    print(f"[*] Toplam {len(jar_files)} adet arşiv dosyası bulundu. Ayıklama başlıyor...")
+    
+    for jar in jar_files:
+        extract_icons_from_jar(jar)
         
-    print("\n✅ İşlem tamamlandı! Büyütülmüş ikonları 'tools/extracted/' klasöründe bulabilirsin.")
+    print("\n==================================================")
+    print("[+] Ayıklama işlemi tamamlandı! Çıktılar 'tools/extracted/' klasöründe.")
+    print("==================================================")
 
 if __name__ == "__main__":
     main()

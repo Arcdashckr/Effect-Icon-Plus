@@ -11,9 +11,9 @@
 ---
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Supported_Mods-_?style=for-the-badge&logo=modrinth&logoColor=%2300AF5C&logoSize=64&label=39&labelColor=black&color=00753F&link=https%3A%2F%2Fgithub.com%2FArcdashckr%2FEffect-Icon-Plus%2Fblob%2Fmain%2Fcompatibility.md" alt="Supported Mods Count: 39">
+    <img src="https://img.shields.io/badge/dynamic/json?style=for-the-badge&logo=modrinth&logoColor=%2300AF5C&label=Supported%20Mods&color=00753F&labelColor=black&query=$.supported_mods&url=https://raw.githubusercontent.com/Arcdashckr/Effect-Icon-Plus/main/tools/stats.json">
     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    <img src="https://img.shields.io/badge/Total_Effect_Icons-_?style=for-the-badge&logo=buffer&logoColor=%23FFFFFF&logoSize=64&label=244&labelColor=black&color=blue&link=https%3A%2F%2Fgithub.com%2FArcdashckr%2FEffect-Icon-Plus%2Ftree%2Fmain%2Fassets" alt="Total Effects Count: 244">
+    <img src="https://img.shields.io/badge/dynamic/json?style=for-the-badge&logo=buffer&logoColor=white&label=Total%20Effect%20Icons&color=blue&labelColor=black&query=$.total_effect_icons&url=https://raw.githubusercontent.com/Arcdashckr/Effect-Icon-Plus/main/tools/stats.json">
 </p>
 
 <p align="center">
@@ -25,7 +25,7 @@
 ---
 
 <div align="center">
-    
+
 ### <a href="https://github.com/Arcdashckr/Effect-Icon-Plus/blob/main/permission/" target="_blank">*</a>Thanks to <a href="https://www.planetminecraft.com/texture-pack/upgrade-effect-icon/" target="_blank">Upgrade Effect Icon</a> by <a href="https://www.planetminecraft.com/member/the_dark_side_of_rero/" target="_blank">CherryRero</a>
 
 </div>
