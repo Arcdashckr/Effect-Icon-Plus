@@ -17,7 +17,7 @@ def get_color_brightness(hex_color):
     b = int(hex_color[4:6], 16)
     return 0.299 * r + 0.587 * g + 0.114 * b
 
-def adjust_contrast(colors, factor=1.3):
+def adjust_contrast(colors, factor=1):
     """Renklerin arasındaki kontrastı artırır, böylece geçişler daha keskin olur"""
     if len(colors) < 2:
         return colors
