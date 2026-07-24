@@ -11,14 +11,18 @@
 ---
 
 <p align="center">
-    <img src="https://img.shields.io/badge/dynamic/json?style=for-the-badge&logo=modrinth&logoColor=%2300AF5C&label=Supported%20Mods&color=00753F&labelColor=black&query=$.supported_mods&url=https://raw.githubusercontent.com/Arcdashckr/Effect-Icon-Plus/main/tools/stats.json">
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    <img src="https://img.shields.io/badge/dynamic/json?style=for-the-badge&logo=buffer&logoColor=white&label=Total%20Effect%20Icons&color=blue&labelColor=black&query=$.total_effect_icons&url=https://raw.githubusercontent.com/Arcdashckr/Effect-Icon-Plus/main/tools/stats.json">
+    <a href="https://github.com/Arcdashckr/Effect-Icon-Plus/blob/main/compatibility.md">
+        <img src="https://img.shields.io/badge/dynamic/json?style=for-the-badge&logo=modrinth&logoColor=%2300AF5C&label=Supported%20Mods&color=00753F&labelColor=black&query=$.supported_mods&url=https://raw.githubusercontent.com/Arcdashckr/Effect-Icon-Plus/main/tools/stats.json" alt="Supported Mods">
+    </a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="https://github.com/Arcdashckr/Effect-Icon-Plus/tree/main/assets">
+        <img src="https://img.shields.io/badge/dynamic/json?style=for-the-badge&logo=buffer&logoColor=white&label=Total%20Effect%20Icons&color=blue&labelColor=black&query=$.total_effect_icons&url=https://raw.githubusercontent.com/Arcdashckr/Effect-Icon-Plus/main/tools/stats.json" alt="Total Effect Icons">
+    </a>
 </p>
 
 <p align="center">
     <strong>Check mod compatibility list from <a href="https://github.com/Arcdashckr/Effect-Icon-Plus/blob/main/compatibility.md" target="_blank">here</a></strong> </br>
-    <strong>Request mod compatibility from <a href="https://github.com/Arcdashckr/Effect-Icon-Plus/issues" target="_blank">here</a></strong> </br> </br>
+    <strong>Request mod compatibility from <a href="https://github.com/Arcdashckr/Effect-Icon-Plus/issues/new?template=request-mod-support.yml" target="_blank">here</a></strong> </br> </br>
     <img src="https://github.com/Arcdashckr/Effect-Icon-Plus/blob/main/images/display/effect_display_mod.png?raw=true"> </br>
 </p>
 
