@@ -83,35 +83,90 @@ def update_compatibility_file(mod_list_with_counts):
 
     # Pre-build list of items with their sorting criteria
     mod_items = []
+    manual_items = []
+
     for folder_name, effect_count in mod_list_with_counts.items():
         info = metadata.get(folder_name)
-        if info:
-            name = info.get("name") or folder_name
-            author = info.get("author") or "Unknown"
-            icon = f'<a href="{info["page_url"]}"><img src="{info["icon_url"]}" width="32"></a>'
-            mod = f'**[{name}]({info["page_url"]})**'
-            author_str = f"by {author}"
-        else:
-            name = folder_name
-            author = "Unknown"
-            icon = "❔"
-            mod = folder_name
-            author_str = "Unknown"
-            
         effects = f'**[{effect_count}]({GITHUB_REPO}/tree/main/assets/{folder_name}/textures/mob_effect)**'
-        
-        group_idx = get_mod_group_index(folder_name, name)
-        
-        mod_items.append({
-            "folder_name": folder_name,
-            "name": name,
-            "author": author,
-            "icon": icon,
-            "mod": mod,
-            "author_str": author_str,
-            "effects": effects,
-            "group_idx": group_idx
-        })
+
+        if folder_name == "minecraft":
+            name = MINECRAFT_NAME
+            author = MINECRAFT_AUTHOR
+            page_url = MINECRAFT_PAGE_URL
+            icon_url = MINECRAFT_ICON_URL
+            if info:
+                name = info.get("name") or name
+                if name.lower() == "minecraft":
+                    name = MINECRAFT_NAME
+                author = info.get("author") or info.get("organization") or author
+                if not author or author == "Unknown":
+                    author = MINECRAFT_AUTHOR
+                page_url = info.get("page_url") or page_url
+                icon_url = info.get("icon_url") or icon_url
+            icon = f'<a href="{page_url}"><img src="{icon_url}" width="32"></a>'
+            mod = f'**[{name}]({page_url})**'
+            author_str = f"by {author}"
+            group_idx = get_mod_group_index(folder_name, name)
+            mod_items.append({
+                "folder_name": folder_name,
+                "name": name,
+                "author": author,
+                "icon": icon,
+                "mod": mod,
+                "author_str": author_str,
+                "effects": effects,
+                "group_idx": group_idx
+            })
+        elif info:
+            name = info.get("name") or folder_name
+            author = info.get("organization") or info.get("author") or "Unknown"
+            page_url = info.get("page_url")
+            icon_url = info.get("icon_url")
+            author_str = f"by {author}" if author != "Unknown" else "Unknown"
+
+            is_manual = info.get("needs_manual_config", False) or not page_url
+
+            if is_manual:
+                # Mod needs manual configuration (dead link or unconfigured)
+                icon = f'<img src="{icon_url}" width="32">' if icon_url else "❔"
+                if page_url:
+                    mod = f'~~[{name}]({page_url})~~ *(404 Not Found)*'
+                else:
+                    mod = f'**{name}** *(No URL)*'
+                manual_items.append({
+                    "folder_name": folder_name,
+                    "name": name,
+                    "author": author,
+                    "icon": icon,
+                    "mod": mod,
+                    "author_str": author_str,
+                    "effects": effects
+                })
+            else:
+                icon = f'<a href="{page_url}"><img src="{icon_url}" width="32"></a>' if icon_url else "❔"
+                mod = f'**[{name}]({page_url})**'
+                group_idx = get_mod_group_index(folder_name, name)
+                mod_items.append({
+                    "folder_name": folder_name,
+                    "name": name,
+                    "author": author,
+                    "icon": icon,
+                    "mod": mod,
+                    "author_str": author_str,
+                    "effects": effects,
+                    "group_idx": group_idx
+                })
+        else:
+            # Asset folder exists, but no metadata found in mod_metadata.json
+            manual_items.append({
+                "folder_name": folder_name,
+                "name": folder_name,
+                "author": "Unknown",
+                "icon": "❔",
+                "mod": f'**{folder_name}** *(Metadata missing)*',
+                "author_str": "Unknown",
+                "effects": effects
+            })
 
     # Sort key:
     # Group index < 99 -> sort by (group_idx, display_name.lower())
@@ -127,6 +182,7 @@ def update_compatibility_file(mod_list_with_counts):
             return (99, author_lower, name_lower)
 
     mod_items.sort(key=sort_key)
+    manual_items.sort(key=lambda x: x["name"].lower())
 
     lines = []
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -156,12 +212,37 @@ def update_compatibility_file(mod_list_with_counts):
             f"| {item['icon']} | {item['mod']} | {item['author_str']} | {item['effects']} |"
         )
 
+    if manual_items:
+        lines.append("")
+        lines.append("---")
+        lines.append("")
+        lines.append("## ⚠️ Manual Configuration Required")
+        lines.append("")
+        lines.append("The following mods could not be verified automatically on Modrinth or CurseForge (page returned 404 or metadata is missing). Please configure them manually using `start.bat` (Option 5: Manage Mod Metadata):")
+        lines.append("")
+        lines.append("| Icon | Mod | Author | Effects |")
+        lines.append("|:---:|------|------|------:|")
+        for item in manual_items:
+            lines.append(
+                f"| {item['icon']} | {item['mod']} | {item['author_str']} | {item['effects']} |"
+            )
+
     with open(COMPATIBILITY_PATH, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 
     print("[>] compatibility.md updated!")
 
-# Recalculate stats and generate files
-total_mods, total_effects, mod_list_with_counts = calculate_repo_stats_and_list()
-update_stats_json(total_mods, total_effects)
-update_compatibility_file(mod_list_with_counts)
+def main():
+    import sys
+    if "--check-links" in sys.argv or "--validate" in sys.argv:
+        from metadata_manager import validate_and_repair_metadata
+        validate_and_repair_metadata()
+        return
+
+    # Recalculate stats and generate files
+    total_mods, total_effects, mod_list_with_counts = calculate_repo_stats_and_list()
+    update_stats_json(total_mods, total_effects)
+    update_compatibility_file(mod_list_with_counts)
+
+if __name__ == "__main__":
+    main()

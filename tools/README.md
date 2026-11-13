@@ -39,6 +39,7 @@ To manage the entire toolkit from a single dashboard, simply double-click and ru
 * **metadata_manager.py**:
   * Extracts namespaces from JARs and manages the `mod_metadata.json` color/author/icon cache.
   * Offers an interactive console matching interface: if a mod namespace doesn't directly match a Modrinth slug, it performs a search, displays potential matches, and asks the user to choose the correct one, input a slug manually, or skip.
+  * **Link Validation & 404 Auto-Repair:** Automatically checks Modrinth and CurseForge links via API. If a mod is removed/404 from Modrinth, it searches for a CurseForge alternative (and vice versa). If no working link can be found, it flags the mod to be isolated into the "Manual Configuration Required" section at the bottom of `compatibility.md`.
 
 ### 1️⃣ Step 1: Icon Extraction (extract_and_scale.py)
 * **Purpose:** Automatically scans and detects effect icons inside `.jar` or `.zip` mod files in `tools/mods/`.

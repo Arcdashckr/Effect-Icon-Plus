@@ -26,6 +26,23 @@ MODRINTH_HEADERS = {
     "User-Agent": "Arcdashckr/Effect-Icon-Plus-Downloader (arcdashckr@gmail.com)"
 }
 
+MINECRAFT_PAGE_URL = "https://www.minecraft.net/"
+MINECRAFT_ICON_URL = "https://minecraft.wiki/images/Minecraft_Launcher_MS_Icon.png"
+MINECRAFT_NAME = "Minecraft"
+MINECRAFT_AUTHOR = "Mojang Studios"
+
+MINECRAFT_METADATA = {
+    "namespace": "minecraft",
+    "source": "vanilla",
+    "project_id": "minecraft",
+    "slug": "minecraft",
+    "page_url": MINECRAFT_PAGE_URL,
+    "name": MINECRAFT_NAME,
+    "author": MINECRAFT_AUTHOR,
+    "organization": MINECRAFT_AUTHOR,
+    "icon_url": MINECRAFT_ICON_URL
+}
+
 def file_exists(path):
     return os.path.isfile(path)
 

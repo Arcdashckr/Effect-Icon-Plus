@@ -6,8 +6,8 @@
         "slug": "aether",
         "page_url": "https://modrinth.com/mod/aether",
         "name": "The Aether",
-        "author": "bconlon1",
-        "organization": null,
+        "author": "The Aether Team",
+        "organization": "The Aether Team",
         "icon_url": "https://cdn.modrinth.com/data/YhmgMVyu/f76fada67156fdeab0974f5f791f936be524d5d3_96.webp",
         "last_updated": "2026-07-11 01:09"
     },
@@ -54,7 +54,7 @@
         "slug": "arsdelight",
         "page_url": "https://modrinth.com/mod/arsdelight",
         "name": "Ars Nouveau's Flavors & Delight",
-        "author": null,
+        "author": "LightLand",
         "organization": "LightLand",
         "icon_url": "https://cdn.modrinth.com/data/BwbT0OZE/67bde05717d6b46b70e169e09152604cb928e4fb.png",
         "last_updated": "2026-07-11 01:20"
@@ -78,7 +78,7 @@
         "slug": "betterend",
         "page_url": "https://modrinth.com/mod/betterend",
         "name": "BetterEnd",
-        "author": null,
+        "author": "BetterX",
         "organization": "BetterX",
         "icon_url": "https://cdn.modrinth.com/data/gc8OEnCC/3afe2f097e9deff31158da380647fdc47131756f_96.webp",
         "last_updated": "2026-07-11 01:20"
@@ -126,8 +126,8 @@
         "slug": "create-new-age",
         "page_url": "https://modrinth.com/mod/create-new-age",
         "name": "Create: New Age",
-        "author": ".constantly",
-        "organization": null,
+        "author": "Antarctic Gardens",
+        "organization": "Antarctic Gardens",
         "icon_url": "https://cdn.modrinth.com/data/FTeXqI9v/1ac4b41d0ddd54fd432fd61edfa70c2d66ccf4ae_96.webp",
         "last_updated": "2026-07-24 20:36"
     },
@@ -174,8 +174,8 @@
         "slug": "eidolon-edoni",
         "page_url": "https://modrinth.com/mod/eidolon-edoni",
         "name": "Eidolon:Edoni",
-        "author": "LeoLezury",
-        "organization": null,
+        "author": "Nutminds",
+        "organization": "Nutminds",
         "icon_url": "https://cdn.modrinth.com/data/fSZPmYn4/e124775426aa3ee5f9bcf6d296cf51ade49f70c1.png",
         "last_updated": "2026-07-11 01:26"
     },
@@ -306,7 +306,7 @@
         "slug": "fruits-delight",
         "page_url": "https://modrinth.com/mod/fruits-delight",
         "name": "Fruits Delight",
-        "author": null,
+        "author": "LightLand",
         "organization": "LightLand",
         "icon_url": "https://cdn.modrinth.com/data/g6sbyCTu/4ecc5d554f260b876d21c427aa6c2bdf4457fd5c.png",
         "last_updated": "2026-07-11 01:27"
@@ -409,15 +409,15 @@
     },
     "ricedelight": {
         "namespace": "ricedelight",
-        "source": "modrinth",
-        "project_id": "F8dvWQ2W",
+        "source": "curseforge",
+        "project_id": "1419951",
         "slug": "rice-delight",
-        "page_url": "https://modrinth.com/mod/rice-delight",
+        "page_url": "https://www.curseforge.com/minecraft/mc-mods/rice-delight",
         "name": "Rice Delight (A Farmer's Delight Add-on)",
-        "author": null,
-        "organization": "QOL",
-        "icon_url": "https://cdn.modrinth.com/data/F8dvWQ2W/e9d2974f0c5cdb248fa3107220f6d9f87ea2c4b6.png",
-        "last_updated": "2026-07-11 01:29"
+        "author": "Ceziak",
+        "organization": null,
+        "icon_url": "https://media.forgecdn.net/avatars/thumbnails/1635/443/256/256/639047236065546170.png",
+        "last_updated": "2026-11-13 22:00"
     },
     "silentsdelight": {
         "namespace": "silentsdelight",
@@ -438,8 +438,8 @@
         "slug": "testosterone",
         "page_url": "https://modrinth.com/mod/testosterone",
         "name": "Create: Testosterone",
-        "author": "JonMyDude",
-        "organization": null,
+        "author": "Rebar",
+        "organization": "Rebar",
         "icon_url": "https://cdn.modrinth.com/data/pIwmV2xi/9c46d093b691243f89465d448642170435480bf4_96.webp",
         "last_updated": "2026-07-24 20:41"
     },
@@ -450,8 +450,8 @@
         "slug": "twilight-delight",
         "page_url": "https://modrinth.com/mod/twilight-delight",
         "name": "Twilight's Flavor & Delight",
-        "author": "MCHuangTao",
-        "organization": null,
+        "author": "LightLand",
+        "organization": "LightLand",
         "icon_url": "https://cdn.modrinth.com/data/d6cSefpO/9f1907e7b0223086fc598b9e36f47e5974bf0335.png",
         "last_updated": "2026-07-24 20:10"
     },
@@ -486,8 +486,8 @@
         "slug": "wilder-wild",
         "page_url": "https://modrinth.com/mod/wilder-wild",
         "name": "Wilder Wild",
-        "author": "osmiooo",
-        "organization": null,
+        "author": "FrozenBlock",
+        "organization": "FrozenBlock",
         "icon_url": "https://cdn.modrinth.com/data/AtHRJSUW/9cef13699a169068ba7a8cc23bb3e5bae86f30fa_96.webp",
         "last_updated": "2026-07-11 01:30"
     },
@@ -498,8 +498,8 @@
         "slug": "yungs-cave-biomes",
         "page_url": "https://modrinth.com/mod/yungs-cave-biomes",
         "name": "YUNG's Cave Biomes",
-        "author": "GoesBySully",
-        "organization": null,
+        "author": "Refresh Studios",
+        "organization": "Refresh Studios",
         "icon_url": "https://cdn.modrinth.com/data/cs7iGVq1/e5ce74259dece306f7d25c55c59d6afcc3d473ea_96.webp",
         "last_updated": "2026-07-11 01:30"
     },
@@ -534,8 +534,8 @@
         "slug": "blue-skies",
         "page_url": "https://modrinth.com/mod/blue-skies",
         "name": "Blue Skies",
-        "author": "KingPhygieBoo",
-        "organization": null,
+        "author": "Modding Legacy",
+        "organization": "Modding Legacy",
         "icon_url": "https://cdn.modrinth.com/data/DOSy3C4M/9b070737ed6c944d8a4378851b9c8377323e4e80.png",
         "last_updated": "2026-07-11 02:23"
     },
@@ -582,8 +582,8 @@
         "slug": "aether-ii",
         "page_url": "https://modrinth.com/mod/aether-ii",
         "name": "The Aether II",
-        "author": "bconlon1",
-        "organization": null,
+        "author": "The Aether Team",
+        "organization": "The Aether Team",
         "icon_url": "https://cdn.modrinth.com/data/JD2NSu5O/32bc4fa21c3f28b34a1839e98def030eb0bc8291_96.webp",
         "last_updated": "2026-07-11 02:23"
     },
@@ -594,8 +594,8 @@
         "slug": "bountiful-fares",
         "page_url": "https://modrinth.com/mod/bountiful-fares",
         "name": "Bountiful Fares",
-        "author": "Hecco",
-        "organization": null,
+        "author": "Heccology",
+        "organization": "Heccology",
         "icon_url": "https://cdn.modrinth.com/data/YgrSDjlb/f4e10611dcc1791138225224fa444f5a8ef4348f_96.webp",
         "last_updated": "2026-07-11 02:23"
     },
@@ -618,8 +618,8 @@
         "slug": "autumnity",
         "page_url": "https://modrinth.com/mod/autumnity",
         "name": "Autumnity",
-        "author": "martianarchitecture",
-        "organization": null,
+        "author": "Team Abnormals",
+        "organization": "Team Abnormals",
         "icon_url": "https://cdn.modrinth.com/data/cRh6MJ6n/e52c9f8a03475093aed41835661de4e323fe1c42_96.webp",
         "last_updated": "2026-07-11 02:24"
     },
@@ -726,8 +726,8 @@
         "slug": "savage-and-ravage",
         "page_url": "https://modrinth.com/mod/savage-and-ravage",
         "name": "Savage & Ravage",
-        "author": "Farcr",
-        "organization": null,
+        "author": "Team Abnormals",
+        "organization": "Team Abnormals",
         "icon_url": "https://cdn.modrinth.com/data/KxOh9voD/a3a23d4e0eef758badcf886b3452e2c90933bc92_96.webp",
         "last_updated": "2026-07-24 20:09"
     },
@@ -738,8 +738,8 @@
         "slug": "upgrade-aquatic",
         "page_url": "https://modrinth.com/mod/upgrade-aquatic",
         "name": "Upgrade Aquatic",
-        "author": "camcamburger",
-        "organization": null,
+        "author": "Team Abnormals",
+        "organization": "Team Abnormals",
         "icon_url": "https://cdn.modrinth.com/data/gTuTFFyz/a3a5d5ecbb899b2808fd0c9140cf3fc421ece9fd_96.webp",
         "last_updated": "2026-07-24 20:12"
     },
@@ -750,8 +750,8 @@
         "slug": "atmospheric",
         "page_url": "https://modrinth.com/mod/atmospheric",
         "name": "Atmospheric",
-        "author": "five",
-        "organization": null,
+        "author": "Team Abnormals",
+        "organization": "Team Abnormals",
         "icon_url": "https://cdn.modrinth.com/data/U9sJOFmJ/08e0ab9c03f182d557ee58216a3d2ae8304ff084_96.webp",
         "last_updated": "2026-07-24 20:12"
     },
@@ -762,8 +762,8 @@
         "slug": "neapolitan",
         "page_url": "https://modrinth.com/mod/neapolitan",
         "name": "Neapolitan",
-        "author": "martianarchitecture",
-        "organization": null,
+        "author": "Team Abnormals",
+        "organization": "Team Abnormals",
         "icon_url": "https://cdn.modrinth.com/data/InYMuiQt/da8f163e363ccca56701eb1fdbb8f04fcfeb3fc5_96.webp",
         "last_updated": "2026-07-24 20:14"
     },
@@ -774,8 +774,8 @@
         "slug": "buzzier-bees",
         "page_url": "https://modrinth.com/mod/buzzier-bees",
         "name": "Buzzier Bees",
-        "author": "Farcr",
-        "organization": null,
+        "author": "Team Abnormals",
+        "organization": "Team Abnormals",
         "icon_url": "https://cdn.modrinth.com/data/b7vOFSIp/70e4d531729366d5da5630799a19faae98b66ccd_96.webp",
         "last_updated": "2026-07-24 20:16"
     },
@@ -786,8 +786,8 @@
         "slug": "environmental",
         "page_url": "https://modrinth.com/mod/environmental",
         "name": "Environmental",
-        "author": "Farcr",
-        "organization": null,
+        "author": "Team Abnormals",
+        "organization": "Team Abnormals",
         "icon_url": "https://cdn.modrinth.com/data/OqtiAZcV/f36950ffa145e62475a6d1f3fb92afe98fa6236b_96.webp",
         "last_updated": "2026-07-24 20:17"
     },
@@ -798,8 +798,8 @@
         "slug": "caverns-and-chasms",
         "page_url": "https://modrinth.com/mod/caverns-and-chasms",
         "name": "Caverns & Chasms",
-        "author": "five",
-        "organization": null,
+        "author": "Team Abnormals",
+        "organization": "Team Abnormals",
         "icon_url": "https://cdn.modrinth.com/data/tfjmPSbI/ef4fb6857f1f7257b84cbb127fc58f7d7a0f17f6_96.webp",
         "last_updated": "2026-07-24 20:17"
     },
@@ -870,10 +870,10 @@
         "slug": "alexs-mobs",
         "page_url": "https://modrinth.com/mod/alexs-mobs",
         "name": "Alex's Mobs",
-        "author": "Carro1001",
+        "author": "AlexModGuy",
         "organization": null,
         "icon_url": "https://cdn.modrinth.com/data/2cMuAZAp/fbe04602fb0fb336be05e7c40378156b49d50156_96.webp",
-        "last_updated": "2026-07-24 21:18"
+        "last_updated": "2026-11-13 21:23"
     },
     "rats": {
         "namespace": "rats",
@@ -898,5 +898,17 @@
         "organization": null,
         "icon_url": "https://cdn.modrinth.com/data/OuJDwbIs/e6beb577fb95c41c4bebaab209dcc593fa2b0d36_96.webp",
         "last_updated": "2026-07-24 21:22"
+    },
+    "minecraft": {
+        "namespace": "minecraft",
+        "source": "vanilla",
+        "project_id": "minecraft",
+        "slug": "minecraft",
+        "page_url": "https://www.minecraft.net/",
+        "name": "Minecraft",
+        "author": "Mojang Studios",
+        "organization": "Mojang Studios",
+        "icon_url": "https://minecraft.wiki/images/Minecraft_Launcher_MS_Icon.png",
+        "last_updated": "2026-11-13 21:00"
     }
 }

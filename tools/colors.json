@@ -4362,6 +4362,19 @@
                 "#1C0000FF",
                 "#1C0000FF"
             ]
+        },
+        "minecraft": {
+            "freezing": [
+                "#FFFFFFFF",
+                "#D2FFFFFF",
+                "#80FEFFFF",
+                "#55D2FDFF",
+                "#047EE2FF",
+                "#124486FF",
+                "#0D1C74FF",
+                "#0D1C74FF",
+                "#0D1C74FF"
+            ]
         }
     },
     "manual": {
@@ -14109,6 +14122,28 @@
                 "#6E001AFF",
                 "#420000FF",
                 "#1C0000FF"
+            ]
+        },
+        "minecraft": {
+            "freezing": [
+                "#FFFFFFFF",
+                "#D2FFFFFF",
+                "#80FEFFFF",
+                "#55D2FDFF",
+                "#047EE2FF",
+                "#124486FF",
+                "#0D1C74FF",
+                "#0D1C74FF",
+                "#0D1C74FF"
+            ],
+            "freezing_all": [
+                "#FFFFFFFF",
+                "#D2FFFFFF",
+                "#80FEFFFF",
+                "#55D2FDFF",
+                "#047EE2FF",
+                "#124486FF",
+                "#0D1C74FF"
             ]
         }
     }

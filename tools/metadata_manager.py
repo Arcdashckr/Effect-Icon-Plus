@@ -154,6 +154,11 @@ def fetch_curseforge_metadata(namespace, project_id):
 def fetch_project_metadata(namespace, source, project_id):
     if not source:
         return None
+    if namespace.lower() == "minecraft" or (source and source.lower() in ("vanilla", "minecraft")):
+        return {
+            **MINECRAFT_METADATA,
+            "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M")
+        }
     if source.lower() == "modrinth":
         url = f"https://api.modrinth.com/v3/project/{project_id}"
         response = requests.get(url, headers=MODRINTH_HEADERS)
@@ -162,22 +167,37 @@ def fetch_project_metadata(namespace, source, project_id):
         author_name = None
         organization_name = None
         try:
-            team = requests.get(
+            # Check if project belongs to an organization via API
+            org_id = project.get("organization")
+            if org_id:
+                org_res = requests.get(
+                    f"https://api.modrinth.com/v3/organization/{org_id}",
+                    headers=MODRINTH_HEADERS
+                )
+                if org_res.status_code == 200:
+                    org_data = org_res.json()
+                    organization_name = org_data.get("name")
+
+            # Fetch project members
+            team_res = requests.get(
                 f"https://api.modrinth.com/v3/project/{project['id']}/members",
                 headers=MODRINTH_HEADERS
-            ).json()
-            if team:
-                author_name = team[0]["user"]["username"]
-            else:
-                organization = requests.get(
-                    f"https://api.modrinth.com/v3/organization/{project['organization']}",
-                    headers=MODRINTH_HEADERS
-                ).json()
-                if organization:
-                    organization_name = organization["name"]
+            )
+            if team_res.status_code == 200:
+                team = team_res.json()
+                if team and isinstance(team, list) and len(team) > 0:
+                    owners = [m["user"]["username"] for m in team if m.get("is_owner") or m.get("role") == "Owner"]
+                    if owners:
+                        author_name = owners[0]
+                    else:
+                        author_name = team[0]["user"]["username"]
         except Exception as e:
-            print(f"[-] Failed to fetch author info: {e}")
+            print(f"[-] Failed to fetch author/organization info: {e}")
             pass
+
+        # If project belongs to an organization, organization is the primary author name
+        primary_author = organization_name or author_name or "Unknown"
+
         return {
             "namespace": namespace,
             "source": source,
@@ -185,7 +205,7 @@ def fetch_project_metadata(namespace, source, project_id):
             "slug": project["slug"],
             "page_url": f"https://modrinth.com/mod/{project['slug']}",
             "name": project["name"],
-            "author": author_name,
+            "author": primary_author,
             "organization": organization_name,
             "icon_url": project.get("icon_url"),
             "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -195,6 +215,221 @@ def fetch_project_metadata(namespace, source, project_id):
     else:
         print(f"[-] Unsupported source: {source}")
         return None
+
+def is_modrinth_project_valid(project_id, slug=None):
+    """
+    Checks if a Modrinth project is valid and active via Modrinth API.
+    Returns (is_valid, project_data_or_none).
+    """
+    for identifier in filter(None, [project_id, slug]):
+        try:
+            r = requests.get(
+                f"https://api.modrinth.com/v3/project/{identifier}",
+                headers=MODRINTH_HEADERS,
+                timeout=8
+            )
+            if r.status_code == 200:
+                data = r.json()
+                if data and data.get("id"):
+                    return True, data
+        except Exception:
+            pass
+    return False, None
+
+def is_curseforge_project_valid(slug):
+    """
+    Checks if a CurseForge project is valid and active via CFWidget / web scraping.
+    Returns (is_valid, data_or_none).
+    """
+    if not slug:
+        return False, None
+    try:
+        r = requests.get(
+            f"https://api.cfwidget.com/minecraft/mc-mods/{slug}",
+            headers=MODRINTH_HEADERS,
+            timeout=8
+        )
+        if r.status_code == 200:
+            data = r.json()
+            if data and data.get("id") and not data.get("error"):
+                return True, data
+    except Exception:
+        pass
+
+    try:
+        url = f"https://www.curseforge.com/minecraft/mc-mods/{slug}"
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        }
+        r = requests.head(url, headers=headers, timeout=8, allow_redirects=True)
+        if r.status_code == 200:
+            return True, None
+    except Exception:
+        pass
+
+    return False, None
+
+def get_slug_candidates(namespace, slug=None):
+    """
+    Generates plausible slug candidate variations to try when searching alternatives.
+    """
+    candidates = []
+    for item in [slug, namespace]:
+        if item and item not in candidates:
+            candidates.append(item)
+            dash_variant = item.replace("_", "-")
+            if dash_variant not in candidates:
+                candidates.append(dash_variant)
+            underscore_variant = item.replace("-", "_")
+            if underscore_variant not in candidates:
+                candidates.append(underscore_variant)
+    return candidates
+
+def validate_and_repair_metadata():
+    """
+    Validates all mod links via API to detect removed/404 projects.
+    Attempts to automatically find alternatives (Modrinth -> CurseForge or vice versa).
+    If no alternative is found, marks mod for manual configuration.
+    """
+    metadata = load_metadata()
+    ensure_minecraft_metadata(metadata)
+
+    print("\n==================================================")
+    print(" VALIDATING MOD LINKS & DETECTING 404s")
+    print("==================================================")
+
+    total_checked = 0
+    repaired_count = 0
+    flagged_count = 0
+    changed = False
+
+    for namespace, info in list(metadata.items()):
+        if namespace == "minecraft":
+            continue
+
+        source = info.get("source", "").lower()
+        slug = info.get("slug")
+        project_id = info.get("project_id")
+        total_checked += 1
+
+        print(f"[{total_checked}] Checking {namespace} ({source})...", end=" ", flush=True)
+
+        if source == "modrinth":
+            is_valid, _ = is_modrinth_project_valid(project_id, slug)
+            if is_valid:
+                print("OK")
+                if info.get("needs_manual_config"):
+                    info.pop("needs_manual_config", None)
+                    info.pop("status", None)
+                    changed = True
+                continue
+
+            print("404 REMOVED!")
+            print(f"  [~] Modrinth project for '{namespace}' returned 404. Searching CurseForge...")
+
+            candidates = get_slug_candidates(namespace, slug)
+            cf_info = None
+            for cand in candidates:
+                cf_info = fetch_curseforge_metadata(namespace, cand)
+                if cf_info:
+                    break
+
+            if cf_info:
+                print(f"  [+] Recovered on CurseForge: {cf_info['page_url']}")
+                cf_info["needs_manual_config"] = False
+                metadata[namespace] = cf_info
+                repaired_count += 1
+                changed = True
+            else:
+                print(f"  [-] CurseForge alternative not found. Marked for manual configuration.")
+                info["needs_manual_config"] = True
+                info["status"] = "404_not_found"
+                flagged_count += 1
+                changed = True
+
+        elif source == "curseforge":
+            is_valid, _ = is_curseforge_project_valid(slug)
+            if is_valid:
+                print("OK")
+                if info.get("needs_manual_config"):
+                    info.pop("needs_manual_config", None)
+                    info.pop("status", None)
+                    changed = True
+                continue
+
+            print("404 REMOVED!")
+            print(f"  [~] CurseForge project for '{namespace}' returned 404. Searching Modrinth...")
+
+            candidates = get_slug_candidates(namespace, slug)
+            mr_info = None
+            for cand in candidates:
+                try:
+                    mr_info = fetch_project_metadata(namespace, "modrinth", cand)
+                    if mr_info:
+                        break
+                except Exception:
+                    pass
+
+            if mr_info:
+                print(f"  [+] Recovered on Modrinth: {mr_info['page_url']}")
+                mr_info["needs_manual_config"] = False
+                metadata[namespace] = mr_info
+                repaired_count += 1
+                changed = True
+            else:
+                print(f"  [-] Modrinth alternative not found. Marked for manual configuration.")
+                info["needs_manual_config"] = True
+                info["status"] = "404_not_found"
+                flagged_count += 1
+                changed = True
+
+    if changed:
+        save_metadata(metadata)
+
+    print("\n==================================================")
+    print(f" Validation Complete: {total_checked} checked, {repaired_count} repaired, {flagged_count} flagged for manual config.")
+    print("==================================================")
+
+    regenerate_repo_files()
+
+def ensure_minecraft_metadata(metadata=None):
+    """
+    Ensures Minecraft fixed metadata exists in metadata dictionary with correct links, name, and author.
+    """
+    save_needed = False
+    if metadata is None:
+        metadata = load_metadata()
+        save_needed = True
+
+    mc = metadata.get("minecraft")
+    if (not mc or 
+        mc.get("name") != MINECRAFT_NAME or 
+        mc.get("author") != MINECRAFT_AUTHOR or 
+        mc.get("page_url") != MINECRAFT_PAGE_URL or 
+        mc.get("icon_url") != MINECRAFT_ICON_URL):
+        
+        metadata["minecraft"] = {
+            **MINECRAFT_METADATA,
+            "last_updated": datetime.now().strftime("%Y-%m-%d %H:%M")
+        }
+        if save_needed:
+            save_metadata(metadata)
+        print("[+] Minecraft metadata ensured with fixed details.")
+        return True
+    return False
+
+def regenerate_repo_files():
+    """
+    Regenerates repository documentation files (compatibility.md and stats.json).
+    """
+    print("[~] Regenerating repository compatibility files...")
+    try:
+        import subprocess
+        script_path = os.path.join(TOOLS_DIR, "generate_repo_files.py")
+        subprocess.run(["python", script_path], check=True)
+        print("[+] compatibility.md and stats.json updated successfully!")
+    except Exception as e:
+        print(f"[-] Failed to automatically regenerate repository files: {e}")
 
 def update_metadata(namespace, source, identifier):
     metadata = load_metadata()
@@ -217,6 +452,11 @@ def update_existing_metadata():
 
     metadata = load_metadata()
 
+    # Ensure fixed Minecraft metadata exists
+    minecraft_updated = ensure_minecraft_metadata(metadata)
+    if minecraft_updated:
+        save_metadata(metadata)
+
     folders = [
         f for f in os.listdir(ASSETS_DIR)
         if os.path.isdir(os.path.join(ASSETS_DIR, f))
@@ -228,6 +468,11 @@ def update_existing_metadata():
 
     if not folders_to_update:
         print("[+] Metadata already exists for all asset folders.")
+        check_choice = input("Would you like to validate all existing links for 404s now? (y/n): ").strip().lower()
+        if check_choice == "y":
+            validate_and_repair_metadata()
+        elif minecraft_updated:
+            regenerate_repo_files()
         return
 
     print(f"\nMetadata will be searched for {len(folders_to_update)} folders.\n")
@@ -259,7 +504,7 @@ def update_existing_metadata():
                 hit = hits[idx]
                 title = hit.get("name", "Unknown Title")
                 slug = hit.get("slug", "unknown-slug")
-                author = hit.get("author", "Unknown Author")
+                author = hit.get("organization") or hit.get("author", "Unknown Author")
                 desc = hit.get("description", "")
                 if len(desc) > 80:
                     desc = desc[:77] + "..."
@@ -314,10 +559,17 @@ def update_existing_metadata():
                 else:
                     print("[-] Invalid choice.")
 
+    regenerate_repo_files()
+
 def update_single_mod_metadata():
     namespace = input("Enter mod namespace (assets folder name, e.g. 'farmersdelight'): ").strip()
     if not namespace:
         print("[-] Namespace cannot be empty.")
+        return
+
+    if namespace.lower() == "minecraft":
+        ensure_minecraft_metadata()
+        regenerate_repo_files()
         return
 
     print(f"\nSelect source for '{namespace}':")
@@ -341,27 +593,34 @@ def update_single_mod_metadata():
 
     success = update_metadata(namespace, source, project_id)
     if success:
-        print("[~] Regenerating repository compatibility files...")
-        try:
-            import subprocess
-            subprocess.run(["python", "generate_repo_files.py"], check=True)
-            print("[+] compatibility.md and stats.json updated successfully!")
-        except Exception as e:
-            print(f"[-] Failed to automatically regenerate repository files: {e}")
+        metadata = load_metadata()
+        if namespace in metadata and metadata[namespace].get("needs_manual_config"):
+            metadata[namespace].pop("needs_manual_config", None)
+            metadata[namespace].pop("status", None)
+            save_metadata(metadata)
+        regenerate_repo_files()
 
 def main():
+    import sys
+    if "--check-links" in sys.argv or "--validate" in sys.argv:
+        validate_and_repair_metadata()
+        return
+
     print("\n==================================================")
     print(" METADATA MANAGER")
     print("==================================================")
-    print("[1] Update Metadata for All Missing/Existing Assets")
+    print("[1] Update Metadata for All Missing Assets")
     print("[2] Update Metadata for a Single Specific Mod")
+    print("[3] Validate Mod Links & Auto-Repair (Detect 404s & Find Alternatives)")
     print("==================================================")
-    choice = input("Your choice (1-2): ").strip()
+    choice = input("Your choice (1-3): ").strip()
 
     if choice == "1":
         update_existing_metadata()
     elif choice == "2":
         update_single_mod_metadata()
+    elif choice == "3":
+        validate_and_repair_metadata()
     else:
         print("[-] Invalid choice.")
 

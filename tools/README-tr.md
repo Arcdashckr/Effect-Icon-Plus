@@ -39,6 +39,7 @@ Tüm araç kitini tek bir panelden yönetmek için klasör içindeki **`start.ba
 * **metadata_manager.py**:
   * JAR dosyalarından namespace'leri ayıklar ve `mod_metadata.json` yazar/ikon/sayfa linki önbelleğini yönetir.
   * İnteraktif konsol eşleştirme arayüzü sunar: Eğer bir modun namespace adı Modrinth slug'ı ile doğrudan eşleşmiyorsa Modrinth üzerinde arama yapar, en olası sonuçları listeler ve kullanıcıdan doğru olanı seçmesini, manuel slug girmesini veya modu pas geçmesini ister.
+  * **Link Doğrulama ve 404 Otomatik Onarım:** Modrinth ve CurseForge API'leri üzerinden mod linklerini kontrol eder. Modrinth'ten kaldırılmış/404 veren bir mod algılandığında otomatik olarak CurseForge alternatifini arar ve bağlar (tersi de geçerlidir). Alternatif bulunamazsa modu `compatibility.md` tablosunun altındaki "Manuel Ayarlanması Gerekenler" bölümüne ayırır.
 
 ### 1️⃣ Adım 1: İkon Ayıklama (extract_and_scale.py)
 * **Görevi:** `tools/mods/` klasöründeki mod arşivlerinin içerisindeki efekt ikonlarını otomatik olarak bulur.
